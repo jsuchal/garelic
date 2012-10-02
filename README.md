@@ -1,4 +1,4 @@
-# Garelic: Google Analytics Reports as "New Relic"-like performance monitoring for your Rails app
+# Garelic: Use Google Analytics as "New Relic" performance monitoring for your Rails app
 
 This gem uses Google Analytics User Timing API to report application performance statistics directly to Google Analytics, where you can slice & dice your data as you wish.
 
@@ -31,14 +31,14 @@ It's easy as 1-2-3.
 
         <%= Garelic::Timing %>
 
-          (function() {
+        (function() {
             var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
             ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
             var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-          })();
+        })();
     </script>
 
-*Step 3.* Go to Google Analytics > Content > Site speed > User Timings
+*Step 3.* Go to Google Analytics > Content > Site Speed > User Timings
 
 Enjoy!
 
