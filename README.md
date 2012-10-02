@@ -1,15 +1,27 @@
 # Garelic: Google Analytics Reports as "New Relic"-like performance monitoring for your Rails app
 
-This is a proof of concept and will probably break things. Use it at your own risk.
+This gem uses Google Analytics User Timing API to report application performance statistics directly to Google Analytics, where you can slice & dice your data as you wish.
+
+Here are some features with pictures:
+
+- [Showing average response times for each action](http://twitpic.com/b0gwkx/full)
+- [Identify slow page loads & drill down to different actions](http://twitpic.com/b0gump/full)
+- [Histogram of response times for an actions](http://twitpic.com/b0gv6e/full)
+- [Performance reports as a nice dashboard](http://twitpic.com/b0gt4j/full)
+
+
+*This is a proof of concept and will probably break things. Use it at your own risk.*
 
 
 ## Installation
 
-1. Add this line to your application's Gemfile:
+It's easy as 1-2-3.
+
+*Step 1.* Add this line to your application's Gemfile:
 
     gem 'garelic'
 
-2. Add Garelic::Timing instrumentation to your GA code in application layout template like this:
+*Step 2.* Add `<%= Garelic::Timing %>` instrumentation to your GA code in application layout template like this:
 
     <script type="text/javascript">
         var _gaq = _gaq || [];
@@ -26,10 +38,9 @@ This is a proof of concept and will probably break things. Use it at your own ri
           })();
     </script>
 
-3. Go to Google Analytics > Content > Site speed > User Timings
+*Step 3.* Go to Google Analytics > Content > Site speed > User Timings
 
-4. Enjoy!
-
+Enjoy!
 
 ## Know advantages
 
