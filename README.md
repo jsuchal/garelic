@@ -37,6 +37,8 @@ It's easy as 1-2-3.
             var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
         })();
     </script>
+    
+(Please note the `_gaq.push(['_setSiteSpeedSampleRate', 100]);` code for better testing.)
 
 *Step 3.* Go to Google Analytics > Content > Site Speed > User Timings
 
