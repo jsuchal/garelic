@@ -4,12 +4,11 @@ This gem uses Google Analytics User Timing API to report application performance
 
 Here are some features with pictures:
 
+- [Performance reports as a nice dashboard](http://twitpic.com/b0gt4j/full)
+- [Histogram of response times for an actions](http://twitpic.com/b0gv6e/full)
+- [Identify slow page loads & drill down to different actions](http://twitpic.com/b0gump/full)
 - [Showing average response times for each action](http://twitpic.com/b0gwkx/full)
 - [How much is spent in database & view generation for an action?](http://twitpic.com/b0h062/full)
-- [Identify slow page loads & drill down to different actions](http://twitpic.com/b0gump/full)
-- [Histogram of response times for an actions](http://twitpic.com/b0gv6e/full)
-- [Performance reports as a nice dashboard](http://twitpic.com/b0gt4j/full)
-
 
 *This is a proof of concept and will probably break things. Use it at your own risk.*
 
