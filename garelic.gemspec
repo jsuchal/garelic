@@ -6,7 +6,7 @@ Gem::Specification.new do |gem|
   gem.email         = ["johno@jsmf.net"]
   gem.description   = %q{Google Analytics Reports as "New Relic"-like performance monitoring for your Rails app}
   gem.summary       = %q{}
-  gem.homepage      = ""
+  gem.homepage      = "https://github.com/jsuchal/garelic"
 
   gem.files         = `git ls-files`.split($\)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
