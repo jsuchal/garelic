@@ -9,6 +9,7 @@ Here are some features with pictures:
 - [Identify slow page loads & drill down to different actions](http://twitpic.com/b0gump/full)
 - [Showing average response times for each action](http://twitpic.com/b0gwkx/full)
 - [How much is spent in database & view generation for an action?](http://twitpic.com/b0h062/full)
+- [How has the yesterdays switch to Ruby 1.9.3 affected response time?](http://twitpic.com/b11mxm/full)
 
 *This is a proof of concept and will probably break things. Use it at your own risk.*
 
