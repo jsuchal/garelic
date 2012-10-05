@@ -4,7 +4,7 @@ require File.expand_path('../lib/garelic/version', __FILE__)
 Gem::Specification.new do |gem|
   gem.authors       = ["Jan Suchal"]
   gem.email         = ["johno@jsmf.net"]
-  gem.description   = %q{Google Analytics Reports as "New Relic"-like performance monitoring for your Rails app}
+  gem.description   = %q{Use Google Analytics for Rails App Performance Monitoring}
   gem.summary       = %q{}
   gem.homepage      = "https://github.com/jsuchal/garelic"
 
