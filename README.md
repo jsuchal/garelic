@@ -46,7 +46,7 @@ It's easy as 1-2-3.
 
 Enjoy!
 
-## Know advantages
+## Known advantages
 
 - it's free
 - shows slow performing pages (not only actions)
