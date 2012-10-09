@@ -11,6 +11,8 @@ Here are some features with pictures:
 - [How much is spent in database & view generation for an action?](http://twitpic.com/b0h062/full)
 - [How has the switch to Ruby 1.9.3 affected response time?](http://twitpic.com/b11mxm/full)
 - [In which action do we spent most time globaly?](http://twitpic.com/b15l7j/full)
+- *NEW (in 0.1.0)* [ActiveRecord queries drilldown](http://twitpic.com/b2o26x/full)
+
 
 *This is a proof of concept and will probably break things. Use it at your own risk.*
 
