@@ -72,7 +72,7 @@ class Garelic
     end
 
     def self.[](category)
-      metrics[category]
+      metrics[category] || {}
     end
 
     private
