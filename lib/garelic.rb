@@ -66,7 +66,7 @@ class Garelic
   class Railtie < Rails::Railtie
     initializer 'garelic.install_instrumentation' do
       Garelic::Metrics.reset!
-      Garelic::deployed_version = `cat #{Rails.root}/REVISION 2>/dev/null`
+      Garelic::deployed_version = `cat #{Rails.root}/REVISION 2>/dev/null`.strip
 
       ActiveSupport::Notifications.subscribe('process_action.action_controller') do |_, start, finish, _, payload|
         Garelic::Metrics.report(:action, :db_runtime, payload[:db_runtime] || 0)
