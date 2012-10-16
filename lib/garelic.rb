@@ -4,6 +4,35 @@ require "garelic/dispatcher"
 class Garelic
   Timing = '<!-- /* GARELIC DATA */ -->'.html_safe
 
+  @@deployed_version_slot = 5
+
+  cattr_accessor :deployed_version, :deployed_version_slot, instance_accessor: false
+
+  def self.monitoring(profile_id)
+    buffer = <<-HTML
+      <script type="text/javascript">
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', 'UA-26274643-1']);
+          _gaq.push(['_setSiteSpeedSampleRate', 100]);
+          #{report_deployed_version}
+          _gaq.push(['_trackPageview']);
+
+          #{Garelic::Timing}
+
+          (function() {
+              var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+              ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+              var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+          })();
+      </script>
+    HTML
+    buffer.html_safe
+  end
+
+  def self.report_deployed_version
+    "_qaq.push(['setCustomVar', #{deployed_version_slot}, 'Garelic (Deployed version)', '#{deployed_version}', 3])" unless deployed_version.blank?
+  end
+
   def self.report_user_timing_from_metrics(metrics)
     reports = report_user_timing_for_action(metrics[:action], metrics.action_identifier)
     reports += report_user_timing_for_active_record(metrics[:active_record], metrics.action_identifier)
@@ -37,6 +66,7 @@ class Garelic
   class Railtie < Rails::Railtie
     initializer 'garelic.install_instrumentation' do
       Garelic::Metrics.reset!
+      Garelic::deployed_version = `cat #{Rails.root}/REVISION 2>/dev/null`
 
       ActiveSupport::Notifications.subscribe('process_action.action_controller') do |_, start, finish, _, payload|
         Garelic::Metrics.report(:action, :db_runtime, payload[:db_runtime] || 0)
