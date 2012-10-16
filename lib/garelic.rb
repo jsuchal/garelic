@@ -12,7 +12,7 @@ class Garelic
     buffer = <<-HTML
       <script type="text/javascript">
           var _gaq = _gaq || [];
-          _gaq.push(['_setAccount', 'UA-26274643-1']);
+          _gaq.push(['_setAccount', '#{profile_id}']);
           _gaq.push(['_setSiteSpeedSampleRate', 100]);
           #{report_deployed_version}
           _gaq.push(['_trackPageview']);
