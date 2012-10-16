@@ -30,7 +30,7 @@ class Garelic
   end
 
   def self.report_deployed_version
-    "_qaq.push(['setCustomVar', #{deployed_version_slot}, 'Garelic (Deployed version)', '#{deployed_version}', 3])" unless deployed_version.blank?
+    "_gaq.push(['_setCustomVar', #{deployed_version_slot}, 'Garelic (Deployed version)', '#{deployed_version}', 3])" unless deployed_version.blank?
   end
 
   def self.report_user_timing_from_metrics(metrics)
