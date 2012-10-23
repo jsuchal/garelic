@@ -66,7 +66,7 @@ class Garelic
   class Railtie < Rails::Railtie
     initializer 'garelic.install_instrumentation' do
       Garelic::Metrics.reset!
-      Garelic::deployed_version = `cat #{Rails.root}/REVISION 2>/dev/null`.strip
+      Garelic::deployed_version = deployed_version_from_git || deployed_version_from_revision_file
 
       ActiveSupport::Notifications.subscribe('process_action.action_controller') do |_, start, finish, _, payload|
         Garelic::Metrics.report(:action, :db_runtime, payload[:db_runtime] || 0)
@@ -79,6 +79,14 @@ class Garelic
         type = payload[:name] || 'Other SQL'
         Garelic::Metrics.report(:active_record, type, (finish - start) * 1000) if type != 'CACHE'
       end
+    end
+
+    def deployed_version_from_git
+      `git log --pretty=format:"%cd %h" --date=iso -1 2>/dev/null`.strip.presence
+    end
+
+    def deployed_version_from_revision_file
+      `cat #{Rails.root}/REVISION 2>/dev/null`.strip.presence
     end
   end
 
