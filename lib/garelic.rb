@@ -1,5 +1,5 @@
 require "garelic/version"
-require "garelic/dispatcher"
+require "garelic/middleware"
 
 class Garelic
   Timing = '<!-- /* GARELIC DATA */ -->'.html_safe
@@ -64,8 +64,9 @@ class Garelic
   end
 
   class Railtie < Rails::Railtie
-    initializer 'garelic.install_instrumentation' do
-      Garelic::Metrics.reset!
+    initializer 'garelic.install_instrumentation' do |app|
+      app.middleware.use Garelic::Middleware
+
       Garelic::deployed_version = deployed_version_from_git || deployed_version_from_revision_file
 
       ActiveSupport::Notifications.subscribe('process_action.action_controller') do |_, start, finish, _, payload|
@@ -115,6 +116,7 @@ class Garelic
 
     private
     def self.metrics
+      Thread.current[:garelic] ||= {}
       Thread.current[:garelic]
     end
   end
