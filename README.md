@@ -12,9 +12,7 @@ Here are some features with pictures:
 - [How has the switch to Ruby 1.9.3 affected response time?](http://twitpic.com/b11mxm/full)
 - [In which action do we spent most time globaly?](http://twitpic.com/b15l7j/full)
 - *NEW (in 0.1.0)* [ActiveRecord queries drilldown](http://twitpic.com/b2o26x/full)
-
-
-*This is a proof of concept and will probably break things. Use it at your own risk.*
+- *NEW (in 0.2.0)* [Deployment performance comparison](http://twitpic.com/b8ai3l/full)
 
 
 ## Installation
@@ -25,24 +23,12 @@ It's easy as 1-2-3.
 
     gem 'garelic'
 
-*Step 2.* Add `<%= Garelic::Timing %>` instrumentation to your GA code in application layout template like this:
+*Step 2.* Add `<%= Garelic::Monitoring 'UA-XXXXXX-X' %>` instrumentation in application layout template (before the closing `</head>` tag) like this:
 
-    <script type="text/javascript">
-        var _gaq = _gaq || [];
-        _gaq.push(['_setAccount', 'UA-XXXXXXXX-X']);
-        _gaq.push(['_setSiteSpeedSampleRate', 100]);
-        _gaq.push(['_trackPageview']);
-
-        <%= Garelic::Timing %>
-
-        (function() {
-            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-        })();
-    </script>
-    
-(Please note the `_gaq.push(['_setSiteSpeedSampleRate', 100]);` code for better testing.)
+    <head>
+        <!-- other rails stuff -->
+        <%= Garelic::Monitoring 'UA-XXXXXX-X' %>
+    </head>
 
 *Step 3.* Go to Google Analytics > Content > Site Speed > User Timings
 
@@ -65,7 +51,6 @@ Enjoy!
 
 ## TODO
 
-- add more fine-grained ActiveRecord instrumentation
 - add support for adding custom user tracers (e.g. for external services)
 
 ## Contributing
