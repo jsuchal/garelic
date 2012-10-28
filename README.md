@@ -14,6 +14,7 @@ Here are some features with pictures:
 - *NEW (in 0.1.0)* [ActiveRecord queries drilldown](http://twitpic.com/b2o26x/full)
 - *NEW (in 0.2.0)* [Deployment performance comparison](http://twitpic.com/b8ai3l/full)
 
+Or look at these [slides from a Garelic presentation](http://www.slideshare.net/jsuchal/garelic-google-analytics-as-app-performance-monitoring).
 
 ## Installation
 
