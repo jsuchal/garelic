@@ -7,18 +7,10 @@ class Garelic::Middleware
   def call(env)
     status, headers, response = @app.call(env)
 
-    if headers["Content-Type"] =~ /text\/html|application\/xhtml\+xml/
-      body = if response.kind_of?(Rack::Response)
-                 response.body 
-             elsif response.kind_of?(Array)
-                 response.first
-             else
-                 response
-             end
-      if body.kind_of?(String)
-        body.gsub!(Garelic::Timing, Garelic.report_user_timing_from_metrics(Garelic::Metrics))
-        response = [body]
-      end
+    if headers["Content-Type"] =~ /text\/html|application\/xhtml\+xml/ \
+        and response.respond_to?(:body)
+      body = response.body.gsub(Garelic::Timing, Garelic.report_user_timing_from_metrics(Garelic::Metrics))
+      response = [body]
     end
 
     Garelic::Metrics.reset!
