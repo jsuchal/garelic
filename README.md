@@ -29,6 +29,7 @@ It's easy as 1-2-3.
     <head>
         <!-- other rails stuff -->
         <%= Garelic.monitoring 'UA-XXXXXX-X' %>
+        <!-- make sure you remove your old GA code! -->
     </head>
 
 *Step 3.* Go to Google Analytics > Content > Site Speed > User Timings
