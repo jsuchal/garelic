@@ -7,7 +7,9 @@ class Garelic::Middleware
   def call(env)
     status, headers, response = @app.call(env)
 
-    if headers["Content-Type"] =~ /text\/html|application\/xhtml\+xml/
+    if headers["Content-Type"] =~ /text\/html|application\/xhtml\+xml/ \
+        and response.respond_to?(:body) \
+        and response.body.respond_to?(:gsub)
       body = response.body.gsub(Garelic::Timing, Garelic.report_user_timing_from_metrics(Garelic::Metrics))
       response = [body]
     end
