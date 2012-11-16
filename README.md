@@ -24,11 +24,11 @@ It's easy as 1-2-3.
 
     gem 'garelic'
 
-*Step 2.* Add `<%= Garelic::Monitoring 'UA-XXXXXX-X' %>` instrumentation in application layout template (before the closing `</head>` tag) like this:
+*Step 2.* Add `<%= Garelic.monitoring 'UA-XXXXXX-X' %>` instrumentation in application layout template (before the closing `</head>` tag) like this:
 
     <head>
         <!-- other rails stuff -->
-        <%= Garelic::Monitoring 'UA-XXXXXX-X' %>
+        <%= Garelic.monitoring 'UA-XXXXXX-X' %>
     </head>
 
 *Step 3.* Go to Google Analytics > Content > Site Speed > User Timings
